@@ -8,7 +8,10 @@ const app = express();
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true })); 
-
+//added these two lines code
+require('dotenv').config();
+const apikey = process.env.API_KEY;
+//
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/signup.html");
 });
@@ -20,7 +23,7 @@ app.post("/", function (req, res) {
   //console.log(firstName, lastName, email);
 
   client.setConfig({
-    apiKey: "29543e83c1a76f3309e7951f018af1d2-us21",
+    apiKey: apikey ,  //apikey from those two lines of code
     server: "us21",
   });
 
@@ -59,5 +62,3 @@ app.listen(3000, function () {
   console.log("Server is running on port 3000.");
 });
 
-require('dotenv').config();
-const apikey = process.env.apiKey;
