@@ -1,14 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-//const request = require("request");
-//const https = require("https");
+
 const client = require("@mailchimp/mailchimp_marketing");
 
 const app = express();
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true })); 
-//added these two lines code
+
+////added these two lines code for .env
 require('dotenv').config();
 const apikey = process.env.API_KEY;
 //
