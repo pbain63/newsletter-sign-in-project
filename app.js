@@ -6,12 +6,13 @@ const client = require("@mailchimp/mailchimp_marketing");
 const app = express();
 
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 ////added these two lines code for .env
 require('dotenv').config();
 const apikey = process.env.API_KEY;
 //
+
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/signup.html");
 });
@@ -23,7 +24,7 @@ app.post("/", function (req, res) {
   //console.log(firstName, lastName, email);
 
   client.setConfig({
-    apiKey: apikey ,  //apikey from those two lines of code
+    apiKey: apikey, //apikey from those two lines of code
     server: "us21",
   });
 
@@ -61,4 +62,3 @@ app.post("/success", function (req, res) {
 app.listen(3000, function () {
   console.log("Server is running on port 3000.");
 });
-
