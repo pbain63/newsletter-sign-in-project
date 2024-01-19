@@ -1,6 +1,6 @@
 Newsletter Sign in Project
 
-In the project if signup is right, it shows a success page or it shows failure page.
+In the project, if sign-up is right, it shows a success page or it shows failure page.
 
 
 
