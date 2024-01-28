@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -9,8 +10,10 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 ////added these two lines code for .env
-require('dotenv').config();
+
 const apikey = process.env.API_KEY;
+const ser_ver = process.env.SERVER;
+const id = process.env.ID;
 //
 
 app.get("/", function (req, res) {
@@ -25,11 +28,11 @@ app.post("/", function (req, res) {
 
   client.setConfig({
     apiKey: apikey, //apikey from those two lines of code
-    server: "us21",
+    server: ser_ver,
   });
 
   const run = async () => {
-    const response = await client.lists.batchListMembers("718ea68962", {
+    const response = await client.lists.batchListMembers(id, {
       members: [
         {
           email_address: email,
